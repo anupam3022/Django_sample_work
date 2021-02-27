@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+
+	
+</head>
+<body>
+
+	
+
+	{% block body %}
+
+	  <h2>Login</h2>
+
+	  <form method="post">
+	  
+	    {% csrf_token %}
+
+	    {% if messages %}
+
+					    <ul class="messages"> 
+					    	{% for message in messages %}	
+					    	
+					    		<li>
+					    			<div class="alert alert-success">{{ message }}</div>
+					    		</li>
+
+					    	{% endfor %}
+					    </ul>
+    
+					{% endif %}
+
+	    {{ form.as_p }}
+
+	    	
+	  
+	    <button type="submit">Login</button>
+	  
+	  </form>
+	  
+	{% endblock %}
+
+</body>
+</html>

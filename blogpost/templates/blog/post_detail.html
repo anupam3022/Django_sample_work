@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<style>
+	
+	*{background-color: #323a3d;
+
+	}
+</style>
+	<body>
+		<div style="margin: 10px;margin-top: 30px;padding: 5px ">
+
+						<h2 style="color: #d1c690">{{ post.title }}</h2>
+						<p style="color: #d1c690">By {{ post.author }} on {{ post.date_posted }}</p>
+					{% for t in post.tag.all %}
+						<p style="color: #c8dbab"> Tags:
+						{{ t.category_type}}
+						</p>
+					{% endfor %}
+						<p style="color: #e6e8da">{{ post.content | linebreaksbr }}</p>
+
+		</div>		
+
+
+	</body>
+</html>

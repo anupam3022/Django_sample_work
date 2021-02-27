@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Post </title>
+</head>
+<body>
+
+		<center><h2>Delete Post</h2></center>
+	
+	<div style="margin-left: 100px; margin-top: 50px">
+
+	<form method="POST">
+
+	{% csrf_token %}
+	
+	<div style="margin: 15px;">
+
+		<h2>Are you sure you want to delete the post - {{ object.title }}? </h2>
+
+		<button style="margin-left: 100px; color: white; background-color: red;padding: 5px  " type="submit">Yes,Delete</button>
+
+		<button style="margin-left: 100px; color: white; background-color: green;padding: 5px " type="submit"><a href="{% url 'blog:post-detail' object.slug %}">Cancel</a></button> 	
+
+	</div>		
+		
+	</div>
+</body>
+</html>
+ 

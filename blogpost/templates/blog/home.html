@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Home</title>
+
+</head>
+<style>
+	
+	*{
+		background-color: #323a3d;
+		padding: 0px;
+		margin: 0px;
+
+	}
+
+	h1{
+		margin-top: 15px;
+	}
+</style>
+	<body>
+
+	{% if request.user %}
+		
+		<h1 style="color:#ff008c; margin: 10px">{{request.user.username}}</h1>
+	
+	{% endif %}
+		
+		{% if messages %}
+
+						    <ul class="messages"> 
+						    	{% for message in messages %}	
+						    	
+						    		<li>
+						    			<div style="color: red" class="alert alert-success">{{ message }}</div>
+						    		</li>
+
+						    	{% endfor %}
+						    </ul>
+	    
+						{% endif %}
+
+
+						<!-- <form method="GET">
+						    {{ form.title }}
+						    <button type="submit">Search</button>
+						</form> -->
+
+						 <div style="margin-left: 1000px" class="Search">
+							
+													
+							<button style=" background-color: white;padding: 5px"><a  style="background-color: white; padding: 5px; color: green;" href="{% url 'blog:search' %}">Search with the title</a></button>
+
+							
+
+						</div>	 
+
+
+
+		<div>
+			<span>				
+				<center><h1 style="font-style: italic; color: darkorange">Welcome to home page</h1></center>
+
+
+				<ul style="text-align: right; margin-right: 50px;">
+
+					<li style="display: inline-block;font-size: 18px; padding: 10px; margin: 5px "><a style="color: #ff008c " href="{% url 'blog:post-create' %}"> Create New Post</a></li>
+					<li style="display: inline-block;font-size: 18px; padding: 10px; "><a style="color: white" href="{% url 'blog:logout' %}">Logout</a></li>
+
+
+
+				</ul>
+		</div>	</span>
+
+		<div style="margin: 10px;margin-top: 30px;padding: 5px ">
+		<span>
+				{% for post in Post %}
+						<h2 style="color: #d1c690"><a style="color: #d1c690" href="{% url 'blog:post-detail' post.slug %}">{{ post.title }}</a></h2>
+
+						<div class="form-group">
+
+							{% if request.user == post.author %}
+
+								<button style="margin-left: 700px; padding: 10px;  color: white; background-color:green"><a style="padding: 10px;  color: white; background-color:green" href="{% url 'blog:post-update' post.slug %}">Update</a></button>
+								
+								<br><br>
+
+								<button style="margin-left: 700px; padding: 10px;  color: white; background-color:red"><a style="padding: 10px;  color: white; background-color:red" href="{% url 'blog:post-delete' post.slug %}">Delete</a></button>
+
+							{% endif %}
+						</div>
+							<p style="color: #d1c690">By <a style="color: #ff008c " href="{% url 'blog:profile' post.author_id %}">{{ post.author }}</a> on {{ post.date_posted }}</p>
+						
+					
+						<br><br>
+
+				{% endfor %}
+		</span>
+		</div>		
+
+		
+
+	</body>
+</html>

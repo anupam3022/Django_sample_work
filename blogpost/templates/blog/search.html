@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+
+	<style>
+	
+	*{
+		background-color: #323a3d;
+		padding: 0px;
+		margin: 0px;
+
+	}
+
+	h1{
+		margin-top: 15px;
+	}
+	h2 {
+		color: pink;
+		margin:10px;
+	}
+</style>
+</head>
+<body>
+
+	<h2>{{title}}</h2>
+
+	<div style="margin-top: 20px" class="Search">
+
+	
+
+	<center><form method="POST" 
+	action="{% if title == 'Search by contains filter' %}
+		{% url 'blog:search' %}
+		{% else %}
+		{% url 'blog:xyz' %}
+		{% endif %}
+		">
+	{% csrf_token %}
+							
+		<input name="title_contains"  style="color: red; background-color: white; padding: 8px;" type="text" placeholder="Search..">
+
+
+							
+		<button style="background-color: white;padding: 5px;" type="submit">Search</button></center>
+
+	</form>
+							
+ 
+	</div>			
+
+	<div style="margin-top: 80px; color: #d1c690">		
+
+		
+
+
+		
+				{% for search in Search %}
+
+				
+					<p style="color: #c8dbab;"><a style="color: #d1c690" href="{% url 'blog:post-detail' search.slug %}">{{ search }}</a>
+
+					{% for t in search.tag.all %} 
+
+					<center><a style="color: #d1c690" href="{% url 'blog:tagprofile' t.id %}"> Tags : {{ t.category_type}}</a></center>
+
+					{% endfor %}</p>
+
+					<hr>
+					
+				{% endfor %}	
+	</div>
+
+
+</body>
+</html>

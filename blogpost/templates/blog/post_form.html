@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Post </title>
+</head>
+<body>
+
+		<center><h2>Create a new post</h2></center>
+	
+	<div style="margin-left: 100px; margin-top: 50px">
+
+	<form method="POST">
+
+	{% csrf_token %}
+	
+	<div style="margin: 15px;">
+
+		<label>Title</label>
+		<p>{{form.title}}</p>
+
+
+		<label>Content</label>
+		<p>{{form.content}}</p>
+
+		<label>Tag</label>
+		<p>{{form.tag}}</p>
+
+
+		<p><button style="margin-left: 100px" type="submit">Post</button> </p>
+			
+	</div>		
+		
+	</div>
+</body>
+</html>
+
+<!-- <label>Title</label>	
+		<input style="width: 400px; margin-left: 70px" type="text" placeholder="Enter Title">
+
+		<br><br>
+		
+		<label>Content</label>
+		<input style=" height: 300px; width: 400px; top: 10px; margin-left: 43px" placeholder="Write the Post content">
+
+		<br><br>
+
+		<button style="margin-left: 300px" type="submit">Post</button>
+ -->

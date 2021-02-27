@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Register</title>
+	</head>
+
+	<body>
+		{% block content %}
+
+			  <center><h2>Sign up</h2></center>
+
+			  <form method="post">
+
+				    {% csrf_token %}
+				
+		<div id="form" style="margin-left: 80px">	
+				<div id ="username">
+					
+					<label>Username</label>
+
+					
+					{{form.username}}
+
+					<p>{{ form.username.errors }}</p>
+		
+				 </div>
+		  
+				
+				<div id ="fstname">
+					
+					<label>First Name</label>
+
+					{{form.first_name}}
+					
+				 </div>
+
+			<br>
+				
+				<div id ="lstname">
+					
+					<label>Last Name</label>
+
+					{{form.last_name}}
+
+				 </div>
+		 <br>
+				
+				<div id ="email">
+					
+					<label>Email ID </label>
+
+					{{form.email}}
+					
+					<p>{{form.email.errors}}</p>
+
+				 </div>
+			
+		
+				
+				<div id ="password1">
+					
+					<label>Password</label>
+
+					{{form.password1}}
+					
+					<p>{{form.password2.errors}}</p>
+					
+				 </div>
+
+
+				 
+				<div id ="password2" style="padding: 5px">
+					
+					<label>Confirm Password</label>
+
+					{{form.password2}}
+					
+					<p>{{form.password2.errors}}</p>
+
+
+				 </div>
+	  	
+				    
+			</div>	    
+
+				    <button style="margin-left: 100px" type="submit">Register</button>
+
+			  </form>
+
+		{% endblock %}
+
+	</body>
+</html>

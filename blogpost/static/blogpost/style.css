@@ -1,0 +1,10 @@
+.head{
+	color: blue;
+	background: url("images/la.jpg") no-repeat;
+}
+
+#carousel-inner{
+
+	height: 300px;
+	
+}
